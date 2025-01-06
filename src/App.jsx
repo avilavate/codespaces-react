@@ -1,6 +1,23 @@
 import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { initializeAnalytics, trackPageView } from './analytics';
+
+
 
 function App() {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    initializeAnalytics('G-4345KFVDC8'); // Replace with your Measurement ID
+  }, []);
+
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location]);
+
+
   return (
     <div className="App">
       <header className="App-header">
